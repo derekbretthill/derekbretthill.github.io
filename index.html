@@ -32,12 +32,216 @@
 
 <header>
 	<h1>*Don't reload the page, it's supposed to look like this*</h1> 
-	<h4>last updated on Sunday Oct. 15, 2023 (8:31p MT)</h4>
+	<h4>last updated on Sunday Dec. 3, 2023 (10:20p MT)</h4>
 	<hr />
 </header>
 
 
 <section id="2023">
+
+
+<article 
+	class="post styleversion1"
+	id="hiding_screenshots_in_the_ios_photos_app">
+		<div class="titlecard">
+			<h3>
+			Introducing A Series, and Hiding Screenshots (Or Not) in the iOS Photos App
+			</h3>
+			<h4>
+			posted on Sunday Dec. 3, 2023 (10:20p MT)
+			</h4>
+		</div>
+		<div class="content">
+
+			<p>
+			I'm gonna start into a large-ish project here where I slowly develop some concepts I've been 
+			thinking about w/out worrying too much about how fully formed they are as I write. The goal 
+			is to hone in on a sort of unifying model (regarding a subject I haven't revealed to you yet) 
+			that I don't know the shape of yet. A relevant metaphor here would be the several blindfolded 
+			folk woefully misidentifying an elephant in each their own special ways, except I'm all of 
+			the blindfolded folk, and I'm giving myself as many tries as I need, and I'm revising my 
+			guesses as I go.
+			</p>
+			<p>
+			The topic I'm interested here is searching, sorting, and filtering items in a database. At this 
+			point I'm not interested in the semantics associated with the words 'searching', 'sorting', 
+			'filtering', 'items', or 'database', but that's something I imagine I'll dive into in some 
+			later post. I'll just provide a few examples here to give a vague sense of the relevant domain: 
+			</p>
+			<p>
+				<div>
+				1. searching through films by year, popularity, genre, etc. in IMDb or Letterboxd.
+				</div>
+				<div>
+				2. sorting MLB players by stat or birthdate in a historical stat database.
+				</div>
+				<div>
+				3. organizing and filtering pictures in a photo library app. (more on this one later in the post)
+				</div>
+			</p>
+			<p>
+			Some initial observations about how these examples overlap: lots of individual items to look through; 
+			individual items are meaningfully similar (e.g. films with films and baseball players with baseball 
+			players, as opposed to films with baseball players); individual items are associated with several 
+			objective properties (e.g. batting average, director, capture process) which can easily be classified 
+			and compared alongside the properties of all other items in the database.
+			</p>
+			<p>
+			This probably goes without saying, but I'm focusing here on *informational* databases, or databases 
+			which can reasonably be interacted with via phone or website or desktop app, as opposed to collections 
+			of physical items (like buttons in a sewing notions cabinet (though I guess that wouldn't really be 
+			a "database")). I might decide at some point that this isn't a necessary distinction, but for now it 
+			seems pertinent. Oh, and just because it's "information" we're sorting through doesn't mean there 
+			couldn't potentially be substantive digital content associated with each individual item. For example, 
+			it doesn't matter if it's a database of movie information (like IMDb) or a database of actual streamable 
+			movie files (like Netflix); I think the searching, sorting, and filtering of those databases will 
+			generally adhere to the same basic axioms.
+			</p>
+			<p>
+			Is "axioms" actually the correct word? Probably not, but for right now it's an alright placeholder 
+			to use as I define my intentions for this whole project: establishing some basic, unifying concepts 
+			or guidelines to use when designing or analyzing tools for interacting with databases. I don't know 
+			yet what grammatical shape these concepts/guidelines will take, and once I've figured a few of them 
+			out I think I'll have a better idea of what to call them. For now, like I said, I'm calling them 
+			axioms. "Axioms for searching, sorting, and filtering items in a database." That's the goal.
+			</p>
+			<p>
+			My plan for getting there is to identify relevant examples of searchable databases, then identify 
+			things I like or (maybe more commonly) things I don't like about my interactions with those databases, 
+			then reverse-engineer my own subconcious rubric from those positive and negative feelings. As I 
+			move on to further examples, I can try applying these reverse-engineered rubric points to see if 
+			they're effective tools outside of the context they were conceived in. I'll make lots of revisions, 
+			I'll combine and un-combine points, and hopefully they'll slowly solidify into solid and sufficiently 
+			general "axioms". I'm not planning on dedicating daily (or even weekly) time to actively work on 
+			this project, so it'll probably take a while. I'll try to show most of my work here.
+			</p>
+			<p>
+			I'd like to stop writing now, but I promised myself before I started that I would give at least 
+			a small example of the actual process in this post, so I'll start off with the lowest hanging 
+			fruit I can think of:
+			</p>
+			<h4>
+			The iOS Photos App.
+			</h4>
+			<p>
+			Some of my family members recently switched to iPhone, and were mentioning some of the pros 
+			and cons of their transition after Thanksgiving dinner. One of them brought up their frustration 
+			with the iOS Photos app, which I was happy about because it meant I had a minute or two to 
+			complain loudly about what I think is probably the worst app I have the displeasure of using 
+			on a daily basis (I'm sure they were very grateful to have invited me).
+			</p>
+			<p>
+			The iOS Photos app has many functions, and not all of them are bad! But in my mind its key 
+			functionality *should be* organizational; a photo library app, like any good library, stores 
+			your photos in such a way that you can easily find what you need when you need it. I think 
+			Apple feels this way, too, since that's what most of the app's real-estate is ostensibly devoted 
+			to. Good heavens, though, they've REALLY bungled the job. I have a lot gripes, but here's the 
+			one that I'll devote the rest of this post too:
+			</p>
+			<h4>
+			There's no way to filter screenshots out of the main camera roll.
+			</h4>
+			<p>
+			I take a lot of screenshots because they're a convenient way to save info for later use. They 
+			add up fast, they're ugly, and they take up a lot of display real-estate. I recently upgraded 
+			my phone and the camera system is way better than my old one, so I've been using it a lot. I 
+			would really like to look through those pictures *without having to scroll past a lot of stupid 
+			looking screenshots*. Apple KNOWS which pictures are screenshots, and they've even kindly built 
+			an album into the app which automatically collects all your screenshots into one place, so there's
+			 gotta be a way to do the reverse, right? A way to see everything BUT the screenshots?
+			</p>
+			<p>
+			Technically there is a way: open the screenshots album I just talked about, hit "select", hit
+			 "select all", hit the elipses menu in the bottom right, hit the option "hide", and then confirm 
+			 that yes, you do want to put all of your screenshots into the very weird and kind of emo "hidden" 
+			 album. Having done all this, you will no longer see screenshots in your main camera roll, 
+			 because that's how the hidden album works; pictures in the hidden album can only be viewed in
+			  the hidden album.
+			</p>
+			<p>
+			This is an *incredibly* limited solution. Can you select an option to automatically add 
+			new screenshots to the hidden album? No, you can only do it manually. Is there a toggle 
+			which lets you see your hidden screenshots in the camera roll again without manually unhiding 
+			them all and then manually hiding them all again? No, they're either hidden or they're not. 
+			Is there a way to organize your hidden photo album in case you have other, non-screenshot 
+			related reasons for using it? No, all photos in the hidden album are mixed together in 
+			one big pot. Is there a way to lock all your screenshots behind FaceID 
+			verification? Yes, you can do that one if you'd like.
+			</p>
+			<p>
+			I don't use this option. In fact, I barely feel comfortable calling it an "option". It's 
+			a work-around. And there shouldn't have to be a work-around; all of the ingredients are 
+			already in place for there to be a tidy and automatic solution *built in to the app*. 
+			Here's what that solution could look like:
+			</p>
+			<p>
+			I'm looking at my camera-roll (or an album I've created, or one of the app's many examples 
+			of automatically generated albums). I don't want to see any screenshots in the pictures I'm
+			 looking at right now, so I tap the elipses menu in the upper right corner and select the 
+			 "Filter" drop-down (which is something that *does* already exist on my phone, at least as 
+			 of my writing this). Out of the list of filters in the drop-down, I choose "Screenshots" 
+			 (which is an option that *doesn't* exist as of writing). At this point, my phone very quickly 
+			 looks at a little binary tag present in each of the image files that says "screenshot" or 
+			 "not a screenshot" -- a tag that already exists, and which my phone is already using to 
+			 compile the automatic screenshot album -- and it temporarily stops displaying all of the 
+			 pictures which say "screenshot". Easy!
+			</p>
+			<p>
+			Actually somewhere in that process there would have to be an extra step where the user  
+			decides if they want to "whitelist" the screenshot filter or "blacklist" it (I didn't 
+			come up with those terms, these topics have been picked over by much smarter people 
+			than I for a very long time). Choosing to whitelist the filter means your phone only 
+			shows pictures that *have* the screenshot tag. That's what the automatic screenshot 
+			album does, and it's the opposite of what we want in this specific scenario. Instead, 
+			we would choose to blacklist the filter so that the phone shows all the pictures *except* 
+			the ones with the screenshot tag. My goal here isn't to sort out the UX involved in how 
+			the user chooses between blacklisting and whitelisting a filter, or frankly the UX 
+			involved in *any* of these database issues (though I might spend some time 
+			talking about it here and there). If I had to guess, I'd probably say that Apple's 
+			big hang-up with this feature *is* UX-related. Frankly I don't think it's a good excuse, 
+			but I'll just add that to the list of topics I'll have to cover at some point later on 
+			in this series.
+			</p>
+			<p>
+			So what are the substantive differences between what Apple is doing and what I think 
+			they *should* be doing? Identifying those differences will give me a lot of important 
+			information toward coming up with an axiom or two.
+			</p>
+			<p>
+			First, I took the filtering option out of one small section of the overall app 
+			(the automatic screenshot album), and made it a universal option, available to 
+			be applied on any screen of the app which has the potential to display multiple 
+			photos.
+			</p>
+			<p>
+			Second, I turned what is currently a whitelist-only filter into a filter that can 
+			be applied as a whitelist *or* a blacklist.
+			</p>
+			<p>
+			I think both of these can be "axiom-ized" without too much trouble (though frankly 
+			I'm hand-waving past a lot of the logic here so that I can go watch a movie or something):
+			</p>
+			<h5>
+			Universality Axiom: Whenever there's a possibility for multiple items to be displayed 
+			together, there's a potential need for filtering.
+			</h5>
+			<h5>
+			Duality Axiom: Collecting items into a category will always create two non-overlapping 
+			groups: The items belonging to the category, and the items not belonging to the category.
+			</h5>
+			<p>
+			Dumb names, probably dumb axioms. As I said up top, these are drafts! I'll keep working on them later.
+			</p>		
+		</div>
+		<p class="sig">
+			-Derek
+		</p>
+	</article>
+	
+
+	<hr />	
+
+
 
 <article 
 	class="post styleversion1"
